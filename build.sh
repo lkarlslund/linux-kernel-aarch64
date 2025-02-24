@@ -12,7 +12,5 @@ git clone --single-branch -b wip/x1e80100-6.14-rc4 https://github.com/jhovold/li
 cd kernel
 
 # Build kernel
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- oldconfig
- 
-# make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- 
-make ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu- bindeb-pkg
+make oldconfig
+make bindeb-pkg
