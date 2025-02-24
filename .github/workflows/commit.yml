@@ -1,0 +1,30 @@
+name: Build and publish on every commit
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Build
+      run: ./build.sh
+      shell: bash
+
+    - name: List everything
+      run: ls -ltr *.deb
+      shell: bash
+
+    - uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "devbuild"
+        prerelease: true
+        title: "Development Build"
+        files: |
+          *.deb
