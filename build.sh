@@ -1,12 +1,15 @@
 # Pull it
-# git clone --single-branch -b wip/x1e80100-6.14-rc4 https://github.com/jhovold/linux kernel
 cd kernel
 
 # Build kernel
 echo Oldconfig ...
+
 make oldconfig
 
+# No signing of debs
+CONFIG_SYSTEM_TRUSTED_KEYS = ""
+
 echo Building debs ...
-make bindeb-pkg
+nice make -j`nproc` bindeb-pkg
 
 echo Done
