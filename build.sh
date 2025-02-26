@@ -15,6 +15,7 @@ scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
 # CONFIG_SYSTEM_TRUSTED_KEYS = ""
 
 echo Building debs ...
-nice make -j`nproc` bindeb-pkg
+make -j1 bindeb-pkg
+# nice make -j`nproc` bindeb-pkg
 
 echo Done
