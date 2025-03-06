@@ -14,7 +14,7 @@ scripts/config --disable SYSTEM_TRUSTED_KEYS
 scripts/config --disable SYSTEM_REVOCATION_KEYS
 
 echo Building debs ...
-make -j1 bindeb-pkg
-# nice make -j`nproc` bindeb-pkg
+#make -j1 bindeb-pkg
+nice make -j`nproc` bindeb-pkg
 
 echo Done
