@@ -7,12 +7,11 @@ cd kernel
 
 # Build kernel
 echo Oldconfig ...
-
 make oldconfig
-scripts/config --set-str SYSTEM_TRUSTED_KEYS ""
 
-# No signing of debs
-# CONFIG_SYSTEM_TRUSTED_KEYS = ""
+echo Disabling signing ...
+scripts/config --disable SYSTEM_TRUSTED_KEYS
+scripts/config --disable SYSTEM_REVOCATION_KEYS
 
 echo Building debs ...
 make -j1 bindeb-pkg
